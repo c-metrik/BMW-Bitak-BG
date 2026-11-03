@@ -1,0 +1,170 @@
+React – Exam Retake Project
+
+Requirements and Technical Specification
+
+
+Task Description
+
+The goal of the project is to develop a complete web application (Single Page Application) that consolidates all the knowledge gained during the course.
+
+The topic is your choice (e.g., Discussion Forum, Blog System, E-commerce Site, Social Network, Booking System), but the application must meet the technical requirements described below.
+
+Grades will be based entirely on implemented functionality and code quality, not on the complexity of the business idea.
+
+Submission Deadline & Git Process
+
+● You must upload your project link in the Retake Exam section of the course page. The submission button will be active from October 28, 2026, until 15:59 on November 17, 2026.
+
+Source Control Requirements (Strict):
+
+● Repository: Public link to GitHub
+
+● Commit History: You must have at least 5 meaningful commits
+
+● Timeline: Commits must be spread across at least 3 different days
+
+Note: Uploading the entire project in a single commit ("Initial commit") or doing all work in one day will result in a penalty or disqualification. We want to see the development process.
+
+Deploy Link (Required):
+
+● Both your frontend (React application) and your backend must be deployed and publicly reachable.
+
+● The link to your deployed frontend must be included in your README.md.
+
+Functional Guide (Required):
+
+Use the provided Functional Guide template. You must include the completed guide directly within your README.md file.
+
+Technical Requirements (Total: 100 points)
+
+The project must include the following modules.
+
+Missing any of them will result in a deduction of the corresponding points.
+
+
+
+
+Application Structure & Routing (25 points)
+
+Pages & Routing (15 pts)
+
+● At least 3 different dynamic pages (pages like About, Contacts, Login, Register do not count towards that figure)
+
+● Client-side routing to at least 5 pages, at least 2 of them with URL parameters
+
+● Dedicated Catalog view (list of all records) and Details view (information about a specific record)
+
+Route Guards (10 pts)
+
+● A guest should have access to basic website information (Catalog, Details), but not to the functional activities
+
+● Unauthenticated users should not be able to reach private pages
+
+● Logged-in users should not be able to see the Login / Register pages
+
+Authentication & Data Handling (30 points)
+
+Authentication Flow (10 pts)
+
+● Implement Register, Login and Logout functionality
+
+● The user's session/identity is recognized consistently across the app (e.g. via Context)
+
+Remote Data Communication (5 pts)
+
+● Communicate with a remote service (REST, sockets, GraphQL, or a similar client-server technique) — hardcoded data is forbidden
+
+CRUD Operations (15 pts)
+
+● At least one collection, different from the Users collection, with all CRUD operations (Create, Read, Update, Delete)
+
+● Only the author of a record can Edit / Delete it
+
+Forms, Validation & Interaction (25 points)
+
+Bound Forms & Synthetic Events (5 pts)
+
+● Use controlled (bound) form inputs and React synthetic events
+
+Validation & Error Handling (15 pts)
+
+● Apply error handling and data validation to avoid crashes when invalid data is entered
+
+● Handle and surface API / network errors in the UI (loading and error states)
+
+User Interaction (5 pts)
+
+● Logged-in users can create records and interact with existing ones via the API (e.g. Likes, Dislikes, Comments)
+
+React Architecture & Styling (20 points)
+
+Hooks & Component Lifecycle (5 pts)
+
+● Demonstrate use of React Hooks (e.g., useState, useEffect) across your components
+
+● demonstrate mount / update / unmount behavior
+
+Context API (5 pts)
+
+● Use the Context API to share state/data across components
+
+Code Organization & Styling (10 pts)
+
+● Component-based architecture with an appropriate folder structure
+
+● Component styling using at least some external CSS files
+
+● Brief documentation of the project and its architecture (as a .md file)
+
+Recommended Tech Stack
+
+Two separate things need to be deployed and live on the internet - don't conflate them:
+
+1. Your React frontend (the app itself) — always required, no matter which backend option you choose below. This is your production build (npm run build), hosted on a static hosting platform.
+
+2. Your backend — whether this is a second, separate deployment depends entirely on which option you pick: - Option A (BaaS): no separate backend deployment step - the database and Auth are already hosted by the provider. You only deploy your frontend (point 1). - Option B (Custom REST API): your backend is a second, separate deployment, on top of your frontend. You end up with two live URLs, not one.
+
+Since your project must be deployed and reachable by reviewers at any time, your backend needs to actually live on the internet — not run only on your machine, and not reset between visits. This rules out purely local/simulated backends (e.g. JSON Server running on localhost). Choose one of the following real, deployable options:
+
+Option A: Backend-as-a-Service (BaaS)
+
+● Source: a hosted platform that provides your database, authentication, and (usually) file storage out of the box, accessed through a client-side SDK
+
+● Advantage: nothing extra to deploy — the database and Auth are already live on the internet; pairs directly with static hosting (Vercel / Netlify / other) for your frontend, so you only manage one moving part
+
+● Auth: real, provided by the platform
+
+● CRUD: real, persisted operations through the platform's SDK
+
+● Top 5 popular options: Firebase, Supabase, Appwrite, PocketBase, Convex — pick whichever documentation you find clearest; none of them is required or preferred over the others
+
+Option B: Custom REST API
+
+● Source: your own backend (e.g. Node.js/Express, or a framework in another language), connected to a real, hosted database (e.g. a managed MongoDB, Postgres, or MySQL instance)
+
+● Advantage: full control over your API design; good if you also want backend practice
+
+● Auth: real (e.g. a JWT-based custom auth flow)
+
+● CRUD: real, persisted operations
+
+Note: this API must be deployed too (e.g. Render, Railway, Fly.io) — a free-tier server that sleeps when idle can look broken to a reviewer if it hasn't warmed up; mention this in your Functional Guide if it applies to you
+
+
+● Whichever you choose, your data must genuinely persist between visits — a reviewer opening your app a week after submission should see the same data you created during development, not an empty or reset state
+
+Fail Criteria
+
+The project will not be accepted or graded if:
+
+● The application crashes on startup (Build Error)
+
+● The README.md file is missing instructions on how to install packages and run the project
+
+● Data is hardcoded (no network requests)
+
+● The Functional Guide is missing or incomplete in README.md — projects without a clear explanation of what the app does will not be graded
+
+● The Git history shows all work was done in 1 day or 1 commit
+
+● The deploy link is missing, unreachable, or the deployed app does not match the submitted code
