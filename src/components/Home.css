@@ -21,7 +21,7 @@
 }
 
 .welcome-intro {
-    width: 50%;
+    width: 48%;
     height: auto;
     margin: auto 0;
     text-align: center;
@@ -50,22 +50,13 @@
     line-height: 1.6;
 }
 
-.welcome-description__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.85rem;
-    margin-top: clamp(1rem, 3vh, 2rem);
-}
-
 
 .car-card-grid {
     margin: auto 0;
-    width: 50%;
+    width: 48%;
     height: auto;
     display:grid;
     grid-template-columns: repeat(3, minmax(0, 20fr));
-    gap: clamp(5%, 2vw, 5rem);
-    margin: 5%;
+    gap: clamp(0.5%, 2vw, 1rem);
     overflow: hidden;
 }
-

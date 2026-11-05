@@ -8,7 +8,6 @@ import { CarDetails } from "./CarDetails"
 import { CarEdit } from "./CarEdit"
 import { Register } from "./Register"
 import { Login } from "./Login"
-import { Logout } from "./Logout"
 import { Profile } from "./Profile"
 import { Footer } from "./Footer"
 
@@ -25,7 +24,6 @@ function App() {
                     <Route path="/cars/:carId/edit" element={<CarEdit />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/logout" element={<Logout />} />
                     <Route path="/profile" element={<Profile />} />
                 </Routes>
 

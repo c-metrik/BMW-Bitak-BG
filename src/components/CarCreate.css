@@ -1,113 +1,79 @@
-.car-create,
-.car-create * {
-    box-sizing: border-box;
-}
-
-#root:has(.car-create) {
-    height: 100vh;
-    min-height: 0;
-    overflow: hidden;
-}
-
-.car-create {
-    display: flex;
-    width: min(100% - 2rem, 1600px);
-    min-height: 0;
-    flex: 1 1 auto;
-    flex-direction: column;
-    margin: 0 auto;
-    padding: 0.75rem 0;
-    color: #202833;
-}
-
-.car-create__intro {
-    display: flex;
-    flex: 0 0 auto;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 0.65rem;
-}
-
-.car-create__intro h1 {
-    margin: 0;
-    font-size: clamp(1.25rem, 2.2vw, 1.8rem);
-}
-
-.car-create__intro > p {
-    margin: 0;
-    color: #5c6874;
-    font-size: 0.85rem;
-    line-height: 1.4;
-}
-
 .car-form {
-    display: grid;
-    min-height: 0;
-    flex: 1 1 auto;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: auto auto;
-    align-content: space-between;
-    gap: 0.65rem 1rem;
-    padding: 0.75rem 1rem;
-    border: 1px solid #dce2e8;
-    border-radius: 0.65rem;
-    background: #fff;
-    box-shadow: 0 0.5rem 1.5rem rgb(27 39 50 / 8%);
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: rgba(195, 200, 203, 0.2);
+    overflow: hidden;
+    border: #00518e 4px solid;
+    box-shadow: 0 8px 24px rgba(142, 142, 142, 0.9);
 }
 
 .car-form__section {
-    min-width: 0;
-    padding: 0.65rem;
-    border: 1px solid #e4e9ee;
-    border-radius: 0.45rem;
-}
-
-.car-form__section h2 {
-    margin: 0 0 0.55rem;
-    color: #1b2732;
-    font-size: 0.95rem;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    padding: 0;
+    border: 0;
 }
 
 .car-form__grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem 0.65rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.1rem 0.5rem;
+    width: 100%;
+    height: auto;
 }
 
 .car-form__grid--single {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    width: 100%;
+    height: auto;
 }
 
 .car-form__field {
+    padding: 1%;
     display: flex;
-    min-width: 0;
     flex-direction: column;
-    gap: 0.25rem;
-    color: #344250;
-    font-size: 0.76rem;
-    font-weight: 650;
+    gap: 0.2rem;
+    color: #74b9ee;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
 .car-form__field input,
 .car-form__field select,
 .car-form__field textarea {
+    box-sizing: border-box;
     width: 100%;
-    min-height: 2.1rem;
-    padding: 0.4rem 0.55rem;
-    border: 1px solid #cbd4dd;
-    border-radius: 0.35rem;
-    background: #fff;
-    color: #202833;
+    min-height: 2.8rem;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #cbd5df;
+    border-radius: 0.55rem;
+    background: rgba(255, 255, 255, 0);
     font: inherit;
-    font-size: 0.82rem;
-    font-weight: 400;
+    font-size: 1.2rem;
+    font-weight: 800;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.car-form__field input::placeholder,
+.car-form__field textarea::placeholder {
+    color: #9aa6b2;
 }
 
 .car-form__field textarea {
-    min-height: 4.6rem;
-    height: 100%;
-    resize: none;
+    min-height: 5rem;
+    resize: vertical;
+    line-height: 1.6;
 }
 
 .car-form__field:has(textarea) {
@@ -117,34 +83,47 @@
 .car-form__field input:focus,
 .car-form__field select:focus,
 .car-form__field textarea:focus {
-    border-color: #0066b1;
-    outline: 2px solid rgb(0 102 177 / 18%);
+    border-color: #087ac1;
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(8 122 193 / 14%);
+}
+
+.car-form__field input[type="file"] {
+    padding: 0.5rem;
+    background:rgba(0, 0, 0, 0.3);
 }
 
 .car-form__hint {
     color: #687786;
-    font-size: 0.7rem;
+    font-size: 0.78rem;
     font-weight: 400;
 }
 
 .car-form__submit {
-    min-height: 2.4rem;
-    align-self: end;
-    justify-self: start;
-    padding: 0.5rem 1rem;
+    margin: 0 auto;
+    min-height: 3rem;
+    align-self: flex-end;
+    padding: 0.8rem 1.5rem;
     border: 0;
-    border-radius: 0.35rem;
+    border-radius: 0.55rem;
     background: #0066b1;
     color: #fff;
     cursor: pointer;
     font: inherit;
-    font-size: 0.85rem;
-    font-weight: 700;
-    transition: background-color 160ms ease;
+    font-size: 0.95rem;
+    font-weight: 750;
+    box-shadow: 0 4px 12px rgb(0 102 177 / 18%);
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
 
 .car-form__submit:hover {
     background: #00518e;
+    box-shadow: 0 6px 16px rgb(0 102 177 / 24%);
+    transform: translateY(-1px);
+}
+
+.car-form__submit:active {
+    transform: translateY(0);
 }
 
 .car-form__submit:focus-visible {
@@ -152,67 +131,18 @@
     outline-offset: 3px;
 }
 
-@media (max-height: 760px) {
+@media (max-width: 650px) {
     .car-create {
-        padding: 0.35rem 0;
-    }
-
-    .car-create__intro {
-        margin-bottom: 0.35rem;
+        width: min(100% - 1.25rem, 600px);
+        padding: 1rem 0 2rem;
     }
 
     .car-form {
-        gap: 0.4rem 0.65rem;
-        padding: 0.45rem 0.65rem;
+        gap: 1.25rem;
+        padding: 1rem;
+        border-radius: 0.75rem;
     }
 
-    .car-form__section {
-        padding: 0.45rem;
-    }
-
-    .car-form__grid {
-        gap: 0.35rem 0.5rem;
-    }
-
-    .car-form__field input,
-    .car-form__field select {
-        min-height: 1.85rem;
-        padding: 0.3rem 0.45rem;
-    }
-}
-
-@media (max-width: 760px), (max-height: 620px) {
-    #root:has(.car-create) {
-        height: auto;
-        min-height: 100vh;
-        overflow: visible;
-    }
-
-    .car-create {
-        width: min(100% - 1.5rem, 640px);
-        flex: 0 0 auto;
-        padding: 1rem 0;
-    }
-
-    .car-create__intro {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 0.25rem;
-    }
-
-    .car-form {
-        flex: 0 0 auto;
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-rows: auto;
-        gap: 0.65rem;
-    }
-
-    .car-form__field textarea {
-        min-height: 6rem;
-    }
-}
-
-@media (max-width: 480px) {
     .car-form__grid,
     .car-form__grid--single {
         grid-template-columns: minmax(0, 1fr);

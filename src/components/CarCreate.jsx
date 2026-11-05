@@ -2,31 +2,23 @@ import "./CarCreate.css"
 
 export function CarCreate() {
     return (
-        <main className="car-create">
+        <main>
             <form className="car-form">
                 <section className="car-form__section" aria-labelledby="car-details-heading">
-                    <h2 id="car-details-heading">Данни за автомобила</h2>
                     <div className="car-form__grid">
                         <label className="car-form__field">
-                            Версия / модификация
+                            Версия
                             <input name="trim" type="text" placeholder="Напр. 320d xDrive" />
                         </label>
                         <label className="car-form__field">
-                            Година на производство
+                            Година
                             <input name="year" type="number" min="1950" max={new Date().getFullYear()} placeholder="2020" required />
                         </label>
                         <label className="car-form__field">
-                            Цена (лв.)
-                            <input name="price" type="number" min="1" step="1" placeholder="25000" required />
-                        </label>
-                        <label className="car-form__field">
-                            Пробег (км)
-                            <input name="mileage" type="number" min="0" step="1" placeholder="85000" required />
-                        </label>
-                        <label className="car-form__field">
+                            Цвят
+                            <input name="color" type="text" placeholder="Напр. Черен металик" />
                         </label>
                     </div>
-                     <h2 id="car-specs-heading">Технически характеристики</h2>
                     <div className="car-form__grid">
                         <label className="car-form__field">
                             Гориво
@@ -37,7 +29,7 @@ export function CarCreate() {
                                 <option value="electric">Електричество</option>
                                 <option value="hybrid">Хибрид</option>
                                 <option value="lpg">Газ / бензин</option>
-                                <option value="other">Друго</option>
+                                <option value="other">Керосин</option>
                             </select>
                         </label>
                         <label className="car-form__field">
@@ -52,16 +44,11 @@ export function CarCreate() {
                             Мощност (к.с.)
                             <input name="power" type="number" min="1" step="1" placeholder="190" />
                         </label>
-                        <label className="car-form__field">
-                            Цвят
-                            <input name="color" type="text" placeholder="Напр. Черен металик" />
-                        </label>
                     </div>
-                    <h2 id="seller-heading">Данни за контакт</h2>
                     <div className="car-form__grid">
                         <label className="car-form__field">
-                            Име за контакт
-                            <input name="sellerName" type="text" autoComplete="name" required />
+                            Цена (€)
+                            <input name="price" type="number" min="1" step="1" placeholder="25000" required />
                         </label>
                         <label className="car-form__field">
                             Телефон
@@ -71,12 +58,7 @@ export function CarCreate() {
                             Местоположение
                             <input name="location" type="text" placeholder="Град" required />
                         </label>
-                        <label className="car-form__field">
-                            e-mail
-                            <input name="email" type="email" autoComplete="email" placeholder="example@email.com" required />
-                        </label>
                     </div>
-                    <h2 id="car-description-heading">Описание и снимки</h2>
                     <div className="car-form__grid car-form__grid--single">
                         <label className="car-form__field">
                             Заглавие на обявата
@@ -84,7 +66,7 @@ export function CarCreate() {
                         </label>
                         <label className="car-form__field">
                             Описание
-                            <textarea name="description" rows="5" placeholder="Опишете състоянието, оборудването и историята на автомобила." required />
+                            <textarea name="description" rows="3" placeholder="Опишете състоянието, оборудването и историята на автомобила." required />
                         </label>
                         <label className="car-form__field">
                             Снимки на автомобила

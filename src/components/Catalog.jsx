@@ -1,9 +1,35 @@
+import { CarCard } from "./CarCard"
+import "./Catalog.css"
+
 export function Catalog() {
     return (
-        <main>
-            <h1>Каталог</h1>
-            <p>Тук можете да прегледате нашите BMW автомобили.</p>
-        </main>
+        <>
+            <main>
+                <div className="full-card-grid">
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                    <CarCard />
+                </div>
+            </main>
+        </>
     )
 };
 

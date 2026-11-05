@@ -1,4 +1,4 @@
-.bmw-header {
+.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -9,7 +9,7 @@
     color: #fff;
 }
 
-.bmw-header h1 {
+.header h1 {
     margin: 0;
     font-size: 1.7rem;
     font-weight: 800;
@@ -17,7 +17,7 @@
     white-space: nowrap;
 }
 
-.bmw-header__brand {
+.header__brand {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
@@ -25,18 +25,18 @@
     text-decoration: none;
 }
 
-.bmw-header__logo {
+.header__logo {
     display: block;
     width: 2.5rem;
     height: 2.5rem;
     object-fit: contain;
 }
 
-.bmw-header__brand span {
+.header__brand span {
     color: #1685d1;
 }
 
-.bmw-header nav ul {
+.header nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +47,7 @@
     list-style: none;
 }
 
-.bmw-header nav a {
+.header nav a {
     display: inline-block;
     padding: 0.65rem 0.9rem;
     border-radius: 4px;
@@ -58,35 +58,35 @@
     transition: background-color 180ms ease, color 180ms ease;
 }
 
-.bmw-header nav a:hover {
+.header nav a:hover {
     background: #303030;
     color: #fff;
 }
 
-.bmw-header nav a.bmw-header__action {
+.header nav a.header_active {
     background: #0066b1;
     color: #fff;
 }
 
-.bmw-header nav a:focus-visible,
-.bmw-header__brand:focus-visible {
+.header nav a:focus-visible,
+.header__brand:focus-visible {
     outline: 2px solid #1685d1;
     outline-offset: 4px;
 }
 
 @media (max-width: 900px) {
-    .bmw-header {
+    .header {
         align-items: center;
         flex-direction: column;
         gap: 1rem;
         padding: 1.25rem;
     }
 
-    .bmw-header nav ul {
+    .header nav ul {
         gap: 0.25rem;
     }
 
-    .bmw-header nav a {
+    .header nav a {
         padding: 0.6rem 0.75rem;
     }
 }

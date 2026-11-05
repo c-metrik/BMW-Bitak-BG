@@ -1,0 +1,21 @@
+.full-card-grid {
+    margin: auto 0;
+    width: 90%;
+    height: auto;
+    display:grid;
+    grid-template-columns: repeat(7, minmax(0, 20fr));
+    gap: clamp(0.5%, 2vw, 1rem);
+    overflow: hidden;
+}
+
+@media (max-width: 900px) {
+    .full-card-grid {
+        grid-template-columns: repeat(5, minmax(0, 20fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .full-card-grid {
+        grid-template-columns: repeat(3, minmax(0, 20fr));
+    }
+}
