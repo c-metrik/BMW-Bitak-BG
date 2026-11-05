@@ -17,20 +17,19 @@ function App() {
         <>
             <Header />
 
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/catalog" element={<Catalog />} />
-                <Route path="/cars/create" element={<CarCreate />} />
-                <Route path="/cars/:carId" element={<CarDetails />} />
-                <Route path="/cars/:carId/edit" element={<CarEdit />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/logout" element={<Logout />} />
-                <Route path="/profile" element={<Profile />} />
-            </Routes>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/catalog" element={<Catalog />} />
+                    <Route path="/cars/create" element={<CarCreate />} />
+                    <Route path="/cars/:carId" element={<CarDetails />} />
+                    <Route path="/cars/:carId/edit" element={<CarEdit />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/logout" element={<Logout />} />
+                    <Route path="/profile" element={<Profile />} />
+                </Routes>
 
             <Footer />
-
         </>
     )
 }

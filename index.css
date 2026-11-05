@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow:hidden;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 92% 10%, rgb(0 102 177 / 35%), transparent 38%),
+        linear-gradient(120deg, #171d24 0%, #202a35 100%);
+}
