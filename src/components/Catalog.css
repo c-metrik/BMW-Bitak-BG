@@ -8,9 +8,15 @@
     overflow: hidden;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
     .full-card-grid {
         grid-template-columns: repeat(5, minmax(0, 20fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .full-card-grid {
+        grid-template-columns: repeat(4, minmax(0, 20fr));
     }
 }
 

@@ -2,18 +2,6 @@
     padding: 0.25rem 0.25rem;
 }
 
-.single-card {
-    padding: 5%;
-    border: 2px solid rgb(255 255 255 / 20%);
-    border-radius: 1rem;
-    background: rgba(110, 110, 110, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-}
-
 .single-card h3 {
     margin: 0.5rem 0 0.35rem;
     color: #fff;
@@ -32,4 +20,29 @@
     height: auto;
     margin-top: 0.5rem;
     border-radius: 0.5rem;
+}
+
+.single-card {
+    padding: 3%;
+    border: 2px solid rgb(255 255 255 / 20%);
+    border-radius: 1rem;
+    background: rgba(110, 110, 110, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+
+    transition: 
+        transform 200ms ease,
+        box-shadow 200ms ease,
+        border-color 200ms ease,
+        background-color 200ms ease;
+}
+
+.single-card:hover {
+    border-color: rgb(0 102 177 / 65%);
+    background: rgba(110, 110, 110, 0.5);
+    box-shadow: 0 12px 28px rgb(0 0 0 / 60%),
+        0 0 12px rgb(0 102 177 / 30%);
 }
