@@ -1,6 +1,6 @@
 .profile-page {
     display: flex;
-    width: min(100% - 2rem, 760px);
+    width: 50%;
     min-height: 0;
     flex: 1 1 auto;
     align-items: center;
@@ -152,7 +152,7 @@
     outline-offset: 3px;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 650px) {
     .profile-page {
         width: min(100% - 1.25rem, 420px);
         padding: 1rem 0;

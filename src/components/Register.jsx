@@ -1,11 +1,10 @@
-import "./CarCreate.css"
-import "./Register.css"
+import "./Forms.css"
 
 export function Register() {
     return (
             <main>
             <form className="car-form" >
-                <h1>Създайте профил, за да използвате битака.</h1>
+                <h1 className="form-heading">Създайте профил, за да използвате битака.</h1>
                 <section className="car-form__section" aria-labelledby="car-details-heading">
                         <label className="car-form__field">
                             E-mail*

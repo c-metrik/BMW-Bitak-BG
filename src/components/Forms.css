@@ -1,22 +1,20 @@
 .car-form {
-    width: 90%;
+    width: 50%;
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
     align-items: center;
     gap: 2rem;
     padding: 1rem;
     border-radius: 0.75rem;
     background: rgba(195, 200, 203, 0.2);
-    overflow: hidden;
     border: #00518e 4px solid;
     box-shadow: 0 8px 24px rgba(142, 142, 142, 0.9);
 }
 
 .car-form__section {
-    width: 100%;
+    width: auto;
     height: auto;
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -28,7 +26,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.1rem 0.5rem;
-    width: 100%;
+    width: auto;
     height: auto;
 }
 
@@ -47,6 +45,11 @@
     font-size: 1rem;
     font-weight: bold;
     text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.form-heading {
+    width: 90%;
+    font-size: inherit;
 }
 
 .car-form__field input,
@@ -138,12 +141,9 @@
 }
 
 @media (max-width: 650px) {
-    .car-create {
-        width: min(100% - 1.25rem, 600px);
-        padding: 1rem 0 2rem;
-    }
 
     .car-form {
+        width: 90%;
         gap: 1.25rem;
         padding: 1rem;
         border-radius: 0.75rem;

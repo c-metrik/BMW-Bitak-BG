@@ -1,14 +1,13 @@
 import { Link } from "react-router"
 
-import "./CarCreate.css"
-import "./Register.css"
+import "./Forms.css"
 
 
 export function Login() {
     return (
             <main>
             <form className="car-form" >
-                <h1>Влезте в профила си, за да можете да публикувате. Ако нямате профил, <Link to="/register">регистрирайте се</Link>.</h1>
+                <h1 className="form-heading">Влезте в профила си, за да можете да публикувате. Ако нямате профил, <Link to="/register">регистрирайте се</Link>.</h1>
                 <section className="car-form__section" aria-labelledby="car-details-heading">
                         <label className="car-form__field">
                             E-mail*

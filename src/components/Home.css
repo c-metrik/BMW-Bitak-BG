@@ -5,7 +5,7 @@
     flex: 1 1 auto;
     flex-direction: row;
     justify-content: space-around;
-    overflow:hidden;
+    overflow: hidden;
     padding: 0px;
     color: #000000;
 }
@@ -55,8 +55,19 @@
     margin: auto 0;
     width: 48%;
     height: auto;
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 20fr));
     gap: clamp(0.5%, 2vw, 1rem);
-    overflow: hidden;
+}
+
+@media (max-width: 650px) {
+    .home {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .welcome-intro, .car-card-grid {
+        width: 90%;
+    }
 }
