@@ -20,6 +20,7 @@
     grid-template-columns: repeat(1, minmax(0, 1fr));
     padding: 0;
     border: 0;
+    overflow: hidden;
 }
 
 .car-form__grid {
@@ -140,7 +141,13 @@
     text-shadow: none;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 970px){
+    .car-form {
+        width: 70%;
+    }
+} 
+
+@media (max-width: 710px) {
 
     .car-form {
         width: 90%;

@@ -1,0 +1,165 @@
+.single-card.full-card {
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-container {
+    width: 50%;
+    height: auto;
+    min-width: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.single-card.full-card > img {
+    width: 80%;
+    height: 50vh;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    object-fit: cover;
+}
+
+.full-card {
+    outline: 2px solid #1685d1;
+    outline-offset: 3px;
+    border-color: rgb(0 102 177 / 65%);
+    background: rgba(110, 110, 110, 0.5);
+    box-shadow: 0 12px 28px rgb(0 0 0 / 60%),
+        0 0 12px rgb(0 102 177 / 30%);
+}
+
+.button-container {
+    margin: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.button-container button {
+    min-height: 2.75rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid rgb(255 255 255 / 22%);
+    border-radius: 0.6rem;
+    background: rgba(0, 102, 177, 0.85);
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.button-container button:hover {
+    border-color: rgb(0 102 177 / 65%);
+    background: #00518e;
+    transform: translateY(-1px);
+}
+
+.button-container button:active {
+    transform: translateY(0);
+}
+
+.button-container button:focus-visible {
+    outline: 2px solid #1685d1;
+    outline-offset: 3px;
+}
+
+.button-container button:last-child {
+    border-color: rgb(220 80 80 / 55%);
+    background: rgba(129, 56, 63, 0.85);
+}
+
+.button-container button:last-child:hover {
+    border-color: rgb(220 80 80 / 80%);
+    background: #81383f;
+}
+
+.car-details-comments {
+    min-width: 50%;
+    margin: 2rem auto;
+}
+
+.car-details-comments h2 {
+    margin: 0 0 1rem;
+    color: #74b9ee;
+}
+
+.car-details-comment-form {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-radius: 0.75rem;
+    background: rgb(110 110 110 / 12%);
+}
+
+.car-details-comment-field {
+    display: grid;
+    gap: 0.4rem;
+    color: #d3dae2;
+    font-weight: 650;
+}
+
+.car-details-comment-field input,
+.car-details-comment-field textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid #cbd5df;
+    border-radius: 0.5rem;
+    background: rgb(255 255 255 / 6%);
+    color: #fff;
+    font: inherit;
+}
+
+.car-details-comment-field textarea {
+    min-height: 6rem;
+    resize: vertical;
+}
+
+.car-details-comment-field input:focus-visible,
+.car-details-comment-field textarea:focus-visible,
+.car-details-comment-submit:focus-visible {
+    outline: 2px solid #1685d1;
+    outline-offset: 2px;
+}
+
+.car-details-comment-submit {
+    justify-self: start;
+    min-height: 2.5rem;
+    padding: 0.55rem 0.9rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background: #0066b1;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+}
+
+.car-details-comment-submit:hover {
+    background: #00518e;
+}
+
+.car-details-comment-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+@media (max-width: 900px) {
+    .single-card.full-card {
+        flex-direction: column;
+    }
+    .details-container {
+        width: 70%;
+    }
+}

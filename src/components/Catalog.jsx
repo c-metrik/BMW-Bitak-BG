@@ -6,30 +6,11 @@ export function Catalog() {
         <>
             <main>
                 <div className="full-card-grid">
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
-                    <CarCard />
+                    {Array.from({ length: 21 }, (_, index) => (
+                        <CarCard key={`catalog-${index + 1}`} carId={`catalog-${index + 1}`} />
+                    ))}
                 </div>
             </main>
         </>
     )
 };
-

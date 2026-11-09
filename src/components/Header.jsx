@@ -15,9 +15,9 @@ export function Header() {
                 <ul>
                     <li><NavLink to="/catalog" className={({ isActive }) => isActive ? "header_active" : ""}>Всички обяви</NavLink></li>
                     <li><NavLink to="/cars/create" className={({ isActive }) => isActive ? "header_active" : ""}>Публикувай обява</NavLink></li>
-                    <li><NavLink to="/register" className={({ isActive }) => isActive ? "header_active" : ""}>Регистрация</NavLink></li>
-                    <li><NavLink to="/login" className={({ isActive }) => isActive ? "header_active" : ""}>Влизане</NavLink></li>
-                    <li><NavLink to="/logout" className={({ isActive }) => isActive ? "header_active" : ""}>Излизане</NavLink></li>
+                    <li><NavLink to="/register" className={({ isActive }) => isActive ? "header_active" : ""}>Регистрирай се</NavLink></li>
+                    <li><NavLink to="/login" className={({ isActive }) => isActive ? "header_active" : ""}>Влез</NavLink></li>
+                    <li><NavLink to="/logout" className={({ isActive }) => isActive ? "header_active" : ""}>Излез</NavLink></li>
                     <li><NavLink to="/profile" className={({ isActive }) => isActive ? "header_active" : ""}>Профил</NavLink></li>
                 </ul>
             </nav>

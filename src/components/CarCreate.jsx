@@ -36,7 +36,7 @@ export function CarCreate() {
                         <label className="car-form__field">
                             Скоростна кутия
                             <select name="transmission" defaultValue="" required>
-                                <option value="" disabled>Изберете скоростна кутия</option>
+                                <option value="" disabled>Изберете ск. кутия</option>
                                 <option value="manual">Ръчна</option>
                                 <option value="automatic">Автоматична</option>
                             </select>
@@ -61,10 +61,6 @@ export function CarCreate() {
                         </label>
                     </div>
                     <div className="car-form__grid car-form__grid--single">
-                        <label className="car-form__field">
-                            Заглавие на обявата
-                            <input name="title" type="text" placeholder="Напр. BMW 320d xDrive, отлично състояние" required />
-                        </label>
                         <label className="car-form__field">
                             Описание
                             <textarea name="description" rows="3" placeholder="Опишете състоянието, оборудването и историята на автомобила." required />

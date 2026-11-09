@@ -1,6 +1,7 @@
 import { Link } from "react-router"
 import "./Home.css"
-import { CarCard } from "./CarCard"
+import { CarCardGrid } from "./CarCardGrid"
+
 
 export function Home() {
     return (
@@ -14,14 +15,8 @@ export function Home() {
                         </p>
                     </div>
 
-                    <div className="car-card-grid">
-                        <CarCard />
-                        <CarCard />
-                        <CarCard />
-                        <CarCard />
-                        <CarCard />
-                        <CarCard />
-                    </div>
+                    <CarCardGrid />
+
                 </section>
             </main>
     )
