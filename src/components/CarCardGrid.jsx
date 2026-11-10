@@ -1,12 +1,12 @@
-import { CarCard } from "./CarCard"
-import "./CarCard.css"
+import { CarCard } from "./CarCard";
+import "./CarCardGrid.css"
 
-export function CarCardGrid () {
+export function CarCardGrid({ cars = [] }) {
     return (
         <div className="car-card-grid">
-            {Array.from({ length: 6 }, (_, index) => (
-                <CarCard key={`featured-${index + 1}`} carId={`featured-${index + 1}`} />
+            {cars.map((car) => (
+                <CarCard key={car.id} car={car} />
             ))}
         </div>
-    )
+    );
 };

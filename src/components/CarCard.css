@@ -3,10 +3,11 @@
     height: auto;
     padding: 0.25rem 0.25rem;
     margin: 2%;
+    overflow: hidden;
 }
 
 .description-container > h1{
-    margin: 2%;
+    margin-bottom: 10%;
     margin-top: 0;
 }
 

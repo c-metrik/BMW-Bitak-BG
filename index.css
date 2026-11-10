@@ -4,7 +4,7 @@
 
 html {
     width: 100%;
-    min-height: 100vh;
+    height: auto;
 }
 
 main {
@@ -20,7 +20,7 @@ main {
 
 body {
     width: 100%;
-    height: auto;
+    min-height: 100vh;
     margin: 0;
     font-family: Inter, "Segoe UI", Arial, sans-serif;
     font-synthesis: none;

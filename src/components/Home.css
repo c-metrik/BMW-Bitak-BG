@@ -51,15 +51,6 @@
 }
 
 
-.car-card-grid {
-    margin: auto 0;
-    width: 48%;
-    height: auto;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 20fr));
-    gap: clamp(0.5%, 2vw, 1rem);
-}
-
 @media (max-width: 650px) {
     .home {
         flex-direction: column;
@@ -67,7 +58,7 @@
         align-items: center;
     }
 
-    .welcome-intro, .car-card-grid {
+    .welcome-intro {
         width: 90%;
     }
 }

@@ -1,15 +1,21 @@
-import "./CarCard.css"
-import { Link } from "react-router"
+import "./CarCard.css";
+import { Link } from "react-router";
 
-export function CarCard({ carId }) {
+export function CarCard({ car }) {
     return (
-        <Link className="single-card" to={`/cars/${carId}`}>
+        <Link className="single-card" to={`/cars/${car.id}`}>
             <div className="description-container">
-                <h3>BMW 325 x-drive</h3>
-                <p>Година: 2020</p>
-                <p>Цена: 25,000 EUR</p>
+                <h3>{car.trim}</h3>
+                <p>Година: {car.year}</p>
+                <p>
+                    Цена: {Number(car.price).toLocaleString("bg-BG")} EUR
+                </p>
             </div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAqQQwSkUJK13KmcsFQiqog5d7glQlpgNzAza8qjq9OJgTa5IsEQaF_dI&s=10" alt="" />
+
+            <img
+                src={car.photos?.[0] || "/placeholder.jpg"}
+                alt={car.trim || "BMW"}
+            />
         </Link>
-    )
-};
+    );
+}

@@ -49,7 +49,9 @@ export function CarDetails() {
                         <button>Изтрий</button>
                     </div>
                 </div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbgQlZF3UFPAzpgWH_bU-s-9fz1KNNo3VUgZUXUMsVmQ&s=10" alt="" />
+                <div className="image-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd8GI21yT3QukiA_sdmiBtJZ-F5dbyqRbIEx_WTkixsg&s=10" alt="" />
+                </div>
             </div>
             <section className="car-details-comments">
                 <form className="car-details-comment-form" onSubmit={addComment}>
