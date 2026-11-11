@@ -135,5 +135,12 @@ export function createCollectionApi(endpoint) {
 
 // APIs for all collections
 export const api = {
-    cars: createCollectionApi(ENDPOINTS.CARS),
+    cars: {
+        ...createCollectionApi(ENDPOINTS.CARS),
+
+        getLatest: () =>
+            request(`${ENDPOINTS.CARS}?select=*&order=created_at.desc`),
+        getLatestSix: () =>
+            request(`${ENDPOINTS.CARS}?select=*&order=created_at.desc&limit=6`),
+    },
 };

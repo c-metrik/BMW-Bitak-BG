@@ -11,12 +11,12 @@ export function Home() {
     useEffect(() => {
         async function loadCars() {
             try {
-                const result = await api.cars.getAll();
-                setCars(result.slice(0, 6));
+                const result = await api.cars.getLatestSix();
+                setCars(result);
             } catch (error) {
                 console.error("Failed to load cars:", error);
             }
-        }
+        };
 
         loadCars();
     }, []);

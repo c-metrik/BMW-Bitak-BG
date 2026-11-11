@@ -18,4 +18,4 @@ export function CarCard({ car }) {
             />
         </Link>
     );
-}
+};

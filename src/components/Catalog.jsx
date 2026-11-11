@@ -6,13 +6,12 @@ import "./Catalog.css";
 
 export function Catalog() {
     const [cars, setCars] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         async function loadCars() {
             try {
-                const result = await api.cars.getAll();
+                const result = await api.cars.getLatest();
                 setCars(result);
             } catch (err) {
                 setError(err.message);
@@ -23,9 +22,6 @@ export function Catalog() {
 
         loadCars();
     }, []);
-
-    if (loading) return <p>Зареждане на обявите...</p>;
-    if (error) return <p>Грешка: {error}</p>;
 
     return (
         <main>
