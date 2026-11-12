@@ -8,11 +8,10 @@ export const authService = {
             password,
         }),
 
-    register: (email, password, username) =>
+    register: (email, password) =>
         authRequest("/signup", "POST", {
             email,
             password,
-            data: { username },
         }),
 
     logout: () =>

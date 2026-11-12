@@ -15,7 +15,7 @@ export function Catalog() {
                 setCars(result);
             } catch (err) {
                 setError(err.message);
-            };
+            }
         }
 
         loadCars();
@@ -23,6 +23,8 @@ export function Catalog() {
 
     return (
         <main>
+            {error && <p role="alert">{error}</p>}
+            
             <div className="full-card-grid">
                 {cars.map((car) => (
                     <CarCard key={car.id} car={car} />

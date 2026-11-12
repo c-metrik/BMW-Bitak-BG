@@ -6,6 +6,7 @@ import { sessionService } from "../API/SessionService";
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
+    const [isInitializing, setIsInitializing] = useState(true);
     const [user, setUser] = useState(null);
     const [role, setRole] = useState(null);
 
@@ -37,10 +38,11 @@ export function AuthProvider({ children }) {
                 setRole(currentRole);
 
             } catch (error) {
-                console.error("Session restoration failed:", error);
                 sessionService.clearSession();
                 setUser(null);
                 setRole(null);
+            } finally {
+                setIsInitializing(false);
             }
         }
 
@@ -102,6 +104,7 @@ export function AuthProvider({ children }) {
                 user,
                 role,
                 isAuthenticated,
+                isInitializing,
                 login,
                 register,
                 logout,

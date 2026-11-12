@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router"
+import RouteGuard from "../guards/RouteGuard";
+import GuestGuard from "../guards/GuestGuard";
 
 import { Home } from "./Home"
 import { Header } from "./Header"
@@ -15,20 +17,31 @@ import { AuthProvider } from "../contexts/AuthContext";
 
 function App() {
     return (
-            <AuthProvider >
-                <Header />
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/catalog" element={<Catalog />} />
-                        <Route path="/cars/create" element={<CarCreate />} />
-                        <Route path="/cars/:carId" element={<CarDetails />} />
-                        <Route path="/cars/:carId/edit" element={<CarEdit />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/profile" element={<Profile />} />
-                    </Routes>
-                <Footer />
-            </AuthProvider>
+        <AuthProvider >
+
+            <Header />
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/catalog" element={<Catalog />} />
+                <Route path="/cars/:carId" element={<CarDetails />} />
+
+                <Route element={<RouteGuard />}>
+                    <Route path="/cars/create" element={<CarCreate />} />
+                    <Route path="/cars/:carId/edit" element={<CarEdit />} />
+                    <Route path="/profile" element={<Profile />} />
+                </Route>
+
+                <Route element={<GuestGuard />}>
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
+                </Route>
+
+            </Routes>
+
+            <Footer />
+            
+        </AuthProvider>
     )
 }
 

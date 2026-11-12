@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import "./Header.css";
 
 export function Header() {
-    const { user, role, isAuthenticated, loading, logout } = useAuth();
+    const { user, role, isAuthenticated, logout } = useAuth();
     const navigate = useNavigate();
 
     async function handleLogout() {
@@ -12,7 +12,7 @@ export function Header() {
             await logout();
             navigate("/");
         } catch (error) {
-            console.error("Logout failed:", error);
+            alert(`Възникна проблем при излизане: ${error.message}`);
         }
     }
 
@@ -37,8 +37,7 @@ export function Header() {
                         </NavLink>
                     </li>
 
-                    {!loading && (
-                        isAuthenticated ? (
+                    { isAuthenticated ? (
                             <>
                                 <li>
                                     <NavLink to="/cars/create" className={({ isActive }) => isActive ? "header_active" : ""}>
@@ -77,7 +76,7 @@ export function Header() {
                                 </li>
                             </>
                         )
-                    )}
+                    }
                 </ul>
             </nav>
         </header>

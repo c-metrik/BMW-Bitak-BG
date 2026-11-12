@@ -8,13 +8,12 @@ export function CarDetails() {
     const { carId } = useParams();
 
     const [car, setCar] = useState(null);
-
+    const [error, setError] = useState("");
     const [comments, setComments] = useState([
         { id: 1, author: "Иван", text: "Автомобилът изглежда много добре." },
         { id: 2, author: "Мария", text: "Има ли сервизна история?" },
         { id: 3, author: "Петър", text: "Може ли да се види през уикенда?" },
     ]);
-
     const [newAuthor, setNewAuthor] = useState("");
     const [newComment, setNewComment] = useState("");
 
@@ -25,7 +24,7 @@ export function CarDetails() {
                 const result = await api.cars.getById(carId);
                 setCar(result[0] || null);
             } catch (error) {
-                console.error("Failed to load cars:", error);
+                setError(error.message);
             }
         }
 
@@ -48,6 +47,10 @@ export function CarDetails() {
 
         setNewAuthor("");
         setNewComment("");
+    }
+
+    if (error) {
+        return <main><p role="alert">{error}</p></main>;
     }
 
     if (!car) {

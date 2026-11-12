@@ -20,7 +20,7 @@ export function Register() {
 
         setError("");
 
-        if (!password.trim || !confirmPassword.trim || !email.trim) {
+        if (!password.trim() || !confirmPassword.trim() || !email.trim()) {
             setError('Всички полета, отбелязани с "*", са задължителни.');
             return;
         }

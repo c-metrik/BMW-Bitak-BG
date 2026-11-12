@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 export function Home() {
 
     const [cars, setCars] = useState([]);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         async function loadCars() {
@@ -14,8 +15,8 @@ export function Home() {
                 const result = await api.cars.getLatestSix();
                 setCars(result);
             } catch (error) {
-                console.error("Failed to load cars:", error);
-            }
+                setError("Неуспешно зареждане на обявите.");
+            }  
         };
 
         loadCars();
@@ -31,6 +32,8 @@ export function Home() {
                         сред BMW предложенията на общността.
                     </p>
                 </div>
+
+                {error && <p role="alert">{error}</p>}
 
                 <CarCardGrid cars={cars} />
 
