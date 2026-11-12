@@ -65,23 +65,13 @@ export function Header() {
                         ) : (
                             <>
                                 <li>
-                                    <NavLink
-                                        to="/register"
-                                        className={({ isActive }) =>
-                                            isActive ? "header_active" : ""
-                                        }
-                                    >
+                                    <NavLink to="/register" className={({ isActive }) => isActive ? "header_active" : ""}>
                                         Регистрирай се
                                     </NavLink>
                                 </li>
 
                                 <li>
-                                    <NavLink
-                                        to="/login"
-                                        className={({ isActive }) =>
-                                            isActive ? "header_active" : ""
-                                        }
-                                    >
+                                    <NavLink to="/login" className={({ isActive }) => isActive ? "header_active" : ""}>
                                         Влез
                                     </NavLink>
                                 </li>

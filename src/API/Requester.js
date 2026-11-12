@@ -58,11 +58,19 @@ async function baseRequest(
     const response = await fetch(`${url}${path}`, options);
 
     if (!response.ok) {
-        const error = await response.text();
+    const errorText = await response.text();
 
-        throw new Error(
-            `HTTP ${response.status}: ${error}`
-        );
+    let message = `HTTP ${response.status}`;
+
+    try {
+        const errorData = JSON.parse(errorText);
+
+        message = errorData.msg || errorData.message || message;
+    } catch {
+        message = errorText || message;
+    }
+
+    throw new Error(message);
     }
 
     if (response.status === 204) {

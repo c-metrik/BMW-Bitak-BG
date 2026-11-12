@@ -67,8 +67,21 @@ export function AuthProvider({ children }) {
         }
     }
 
-    async function register(email, password, username) {
-        return authService.register(email, password, username);
+    async function register(email, password) {
+    const session = await authService.register(email, password);
+
+    if (!session.access_token || !session.user) {
+        throw new Error("Registration did not return a session.");
+    }
+
+    sessionService.saveSession(session);
+
+    const currentRole = await authService.getRole(session.user.id);
+
+    setUser(session.user);
+    setRole(currentRole);
+
+    return session.user;
     }
 
     async function logout() {
