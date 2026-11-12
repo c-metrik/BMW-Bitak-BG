@@ -11,24 +11,24 @@ import { Login } from "./Login"
 import { Profile } from "./Profile"
 import { Footer } from "./Footer"
 
+import { AuthProvider } from "../contexts/AuthContext";
+
 function App() {
     return (
-        <>
-            <Header />
-
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/catalog" element={<Catalog />} />
-                    <Route path="/cars/create" element={<CarCreate />} />
-                    <Route path="/cars/:carId" element={<CarDetails />} />
-                    <Route path="/cars/:carId/edit" element={<CarEdit />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/profile" element={<Profile />} />
-                </Routes>
-
-            <Footer />
-        </>
+            <AuthProvider >
+                <Header />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/catalog" element={<Catalog />} />
+                        <Route path="/cars/create" element={<CarCreate />} />
+                        <Route path="/cars/:carId" element={<CarDetails />} />
+                        <Route path="/cars/:carId/edit" element={<CarEdit />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/profile" element={<Profile />} />
+                    </Routes>
+                <Footer />
+            </AuthProvider>
     )
 }
 

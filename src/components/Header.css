@@ -47,18 +47,26 @@
     list-style: none;
 }
 
-.header nav a {
+.header nav a,
+.header nav button {
     display: inline-block;
     padding: 0.65rem 0.9rem;
     border-radius: 4px;
     color: #e8e8e8;
     font-size: 0.95rem;
     font-weight: 600;
+    font-family: inherit;
     text-decoration: none;
     transition: background-color 180ms ease, color 180ms ease;
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
-.header nav a:hover {
+
+.header nav a:hover,
+.header nav button:hover {
     background: #303030;
     color: #fff;
 }
@@ -86,7 +94,8 @@
         gap: 0.25rem;
     }
 
-    .header nav a {
-        padding: 0.6rem 0.75rem;
+    .header nav a,
+    .header nav button {
+    padding: 0.6rem 0.75rem;
     }
 }

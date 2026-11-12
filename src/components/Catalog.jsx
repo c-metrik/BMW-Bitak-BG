@@ -15,9 +15,7 @@ export function Catalog() {
                 setCars(result);
             } catch (err) {
                 setError(err.message);
-            } finally {
-                setLoading(false);
-            }
+            };
         }
 
         loadCars();
