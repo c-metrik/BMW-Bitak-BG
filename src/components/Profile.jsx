@@ -46,9 +46,7 @@ export function Profile() {
                 </footer>
             </article>
             <section className="profile-card__listings">
-                    {cars.length > 0
-                            ? <p>Вашите обяви</p>
-                            : <p></p>}
+                    {cars.length > 0 && <h2>Вашите обяви</h2>}
 
                     {error && <p role="alert">{error}</p>}
 

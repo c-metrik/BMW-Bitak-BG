@@ -52,7 +52,7 @@ export function Header() {
                             </li>
 
                             <li>
-                                <span>{user.email}</span>
+                                <div className="user">{user.email}</div>
                             </li>
 
                             <li>
