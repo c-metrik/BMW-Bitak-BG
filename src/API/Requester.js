@@ -150,5 +150,7 @@ export const api = {
             request(`${ENDPOINTS.CARS}?select=*&order=created_at.desc`),
         getLatestSix: () =>
             request(`${ENDPOINTS.CARS}?select=*&order=created_at.desc&limit=6`),
+        getByOwner: (userId) =>
+            request(`${ENDPOINTS.CARS}?owner_id=eq.${encodeURIComponent(userId)}&select=*&order=created_at.desc`),
     },
 };

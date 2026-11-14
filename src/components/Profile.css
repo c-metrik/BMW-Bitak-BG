@@ -1,17 +1,29 @@
 .profile-page {
     display: flex;
-    width: 50%;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1200px;
     min-height: 0;
     flex: 1 1 auto;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 2rem;
     margin: 0 auto;
     padding: 2rem 0;
     color: #fff;
 }
 
+.profile-card__listings {
+    width: 100%;
+    text-align: center;
+}
+
 .profile-card {
     width: 100%;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
     padding: clamp(1.25rem, 4vw, 2.5rem);
     border: 5px solid rgb(255 255 255 / 20%);
     border-radius: 1rem;
