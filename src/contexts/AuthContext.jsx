@@ -7,7 +7,10 @@ const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
     const [isInitializing, setIsInitializing] = useState(true);
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+        const session = sessionService.getSession();
+        return session?.user ?? null;
+    });
     const [role, setRole] = useState(null);
 
     useEffect(() => {

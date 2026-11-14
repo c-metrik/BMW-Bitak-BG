@@ -1,12 +1,14 @@
 import "./CarDetails.css";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { Comment } from "./Comment";
 import { api } from "../API/Requester";
+import { useAuth } from "../contexts/AuthContext";
 
 export function CarDetails() {
+    const { user } = useAuth();
     const { carId } = useParams();
-
+    const navigate = useNavigate();
     const [car, setCar] = useState(null);
     const [error, setError] = useState("");
     const [comments, setComments] = useState([
@@ -57,6 +59,29 @@ export function CarDetails() {
         return <p>Зареждане на обявата...</p>;
     }
 
+    const isOwner = Boolean(user && car.owner_id === user.id);
+
+
+    async function handleDelete() {
+    if (!isOwner) return;
+
+    const confirmed = window.confirm(
+        "Сигурни ли сте, че искате да изтриете тази обява?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+        await api.cars.remove(car.id);
+
+        alert("Обявата беше изтрита успешно!");
+
+        navigate("/catalog");
+    } catch (err) {
+        alert(`Грешка при изтриване: ${err.message}`);
+    }
+    }
+
     return (
         <main>
             <div className="single-card full-card">
@@ -76,10 +101,12 @@ export function CarDetails() {
                         <p>Описание: {car.description}</p>
                     </div>
 
+                    {isOwner && (
                     <div className="button-container">
-                        <button>Редактирай</button>
-                        <button>Изтрий</button>
+                    <Link to={`/cars/${car.id}/edit`} className="edit-button">Редактирай</Link>
+                    <button type="button" className="edit-button" onClick={handleDelete}>Изтрий</button>
                     </div>
+                    )}
                 </div>
 
                 <div className="image-container">

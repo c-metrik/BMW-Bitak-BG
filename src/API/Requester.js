@@ -6,6 +6,7 @@ const restUrl = `${baseUrl}/rest/v1`;
 const authUrl = `${baseUrl}/auth/v1`;
 const storageUrl = `${baseUrl}/storage/v1/object/car-images`;
 
+
 // Get authentication headers
 function getAccessToken() {
     const auth = localStorage.getItem("auth");
@@ -113,8 +114,7 @@ export const crud = {
         request(`${endpoint}?id=eq.${encodeURIComponent(id)}&select=*`),
 
     // CREATE
-    create: (endpoint, data) =>
-        request(endpoint, "POST", data),
+    create: (endpoint, data) => request(endpoint, "POST", data),
 
     // UPDATE
     update: (endpoint, id, data) =>

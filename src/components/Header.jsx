@@ -37,45 +37,45 @@ export function Header() {
                         </NavLink>
                     </li>
 
-                    { isAuthenticated ? (
-                            <>
-                                <li>
-                                    <NavLink to="/cars/create" className={({ isActive }) => isActive ? "header_active" : ""}>
-                                        Публикувай обява
-                                    </NavLink>
-                                </li>
+                    {isAuthenticated ? (
+                        <>
+                            <li>
+                                <NavLink to="/cars/create" className={({ isActive }) => isActive ? "header_active" : ""}>
+                                    Публикувай обява
+                                </NavLink>
+                            </li>
 
-                                <li>
-                                    <NavLink to="/profile" className={({ isActive }) => isActive ? "header_active" : ""}>
-                                        Профил
-                                    </NavLink>
-                                </li>
+                            <li>
+                                <NavLink to="/profile" className={({ isActive }) => isActive ? "header_active" : ""}>
+                                    Профил
+                                </NavLink>
+                            </li>
 
-                                <li>
-                                    <span>{user.email}</span>
-                                </li>
+                            <li>
+                                <span>{user.email}</span>
+                            </li>
 
-                                <li>
-                                    <button className="header_logout" type="button" onClick={handleLogout}>
-                                        Излез
-                                    </button>
-                                </li>
-                            </>
-                        ) : (
-                            <>
-                                <li>
-                                    <NavLink to="/register" className={({ isActive }) => isActive ? "header_active" : ""}>
-                                        Регистрирай се
-                                    </NavLink>
-                                </li>
+                            <li>
+                                <button className="header_logout" type="button" onClick={handleLogout}>
+                                    Излез
+                                </button>
+                            </li>
+                        </>
+                    ) : (
+                        <>
+                            <li>
+                                <NavLink to="/register" className={({ isActive }) => isActive ? "header_active" : ""}>
+                                    Регистрирай се
+                                </NavLink>
+                            </li>
 
-                                <li>
-                                    <NavLink to="/login" className={({ isActive }) => isActive ? "header_active" : ""}>
-                                        Влез
-                                    </NavLink>
-                                </li>
-                            </>
-                        )
+                            <li>
+                                <NavLink to="/login" className={({ isActive }) => isActive ? "header_active" : ""}>
+                                    Влез
+                                </NavLink>
+                            </li>
+                        </>
+                    )
                     }
                 </ul>
             </nav>
