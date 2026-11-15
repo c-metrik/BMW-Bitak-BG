@@ -4,7 +4,11 @@ const baseUrl = import.meta.env.VITE_SUPABASE_URL;
 
 const restUrl = `${baseUrl}/rest/v1`;
 const authUrl = `${baseUrl}/auth/v1`;
-const storageUrl = `${baseUrl}/storage/v1/object/car-images`;
+const storageUrl = `${baseUrl}/storage/v1/object/car-photos`;
+
+export function getCarPhotoUrl(filePath) {
+    return `${baseUrl}/storage/v1/object/public/car-photos/${filePath}`;
+}
 
 
 // Get authentication headers

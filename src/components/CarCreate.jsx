@@ -3,7 +3,7 @@ import "./Forms.css"
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
-import { api } from "../API/Requester";
+import { api, storageRequest, getCarPhotoUrl } from "../API/Requester";
 
 export function CarCreate({ initialData = null }) {
     const isEditing = Boolean(initialData?.id);
@@ -23,6 +23,8 @@ export function CarCreate({ initialData = null }) {
 
         try {
             const formData = new FormData(event.currentTarget);
+
+            const photo = formData.get("photos");
 
             const carData = {
                 trim: formData.get("trim")?.trim() || null,
@@ -54,16 +56,27 @@ export function CarCreate({ initialData = null }) {
                 await api.cars.update(initialData.id, carData);
                 navigate(`/cars/${initialData.id}`);
             } else {
+                let photoUrl = null;
+
+                if (photo instanceof File && photo.size > 0) {
+                    const extension = photo.name.split(".").pop().toLowerCase();
+                    const filePath = `${user.id}/${crypto.randomUUID()}.${extension}`;
+
+                    await storageRequest(filePath, photo);
+
+                    photoUrl = getCarPhotoUrl(filePath);
+                }
+
                 const createdCars = await api.cars.create({
-                ...carData,
-                owner_id: user.id,
-                photos: [],
-            });
+                    ...carData,
+                    owner_id: user.id,
+                    photos: photoUrl ? [photoUrl] : [],
+                });
 
-        const newCar = createdCars[0];
+                const newCar = createdCars[0];
 
-        navigate(`/cars/${newCar.id}`);
-        }
+                navigate(`/cars/${newCar.id}`);
+            }
 
         } catch (error) {
             setError(error.message);
@@ -150,9 +163,13 @@ export function CarCreate({ initialData = null }) {
                             	defaultValue={initialData?.description ?? ""}/>
                         </label>
                         <label className="car-form__field">
-                            Снимки на автомобила
-                            <input name="photos" type="file" accept="image/*" multiple />
-                            <span className="car-form__hint">Можете да изберете няколко снимки.</span>
+                            Снимка на автомобила
+                            <input
+                                name="photos"
+                                type="file"
+                                accept="image/jpeg,image/png,image/webp"
+                            />
+                            <span className="car-form__hint">Можете да добавите една снимка на автомобила.</span>
                         </label>
                     </div>
                 </section>
