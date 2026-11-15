@@ -1,7 +1,7 @@
 import "./CarDetails.css";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import { Comment } from "./Comment";
+import { CarComments } from "./CarComments";
 import { api } from "../API/Requester";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -11,13 +11,7 @@ export function CarDetails() {
     const navigate = useNavigate();
     const [car, setCar] = useState(null);
     const [error, setError] = useState("");
-    const [comments, setComments] = useState([
-        { id: 1, author: "Иван", text: "Автомобилът изглежда много добре." },
-        { id: 2, author: "Мария", text: "Има ли сервизна история?" },
-        { id: 3, author: "Петър", text: "Може ли да се види през уикенда?" },
-    ]);
-    const [newAuthor, setNewAuthor] = useState("");
-    const [newComment, setNewComment] = useState("");
+
 
     useEffect(() => {
 
@@ -118,45 +112,7 @@ export function CarDetails() {
             </div>
 
             <section className="car-details-comments">
-                <form
-                    className="car-details-comment-form"
-                    onSubmit={addComment}
-                >
-                    <label className="car-details-comment-field">
-                        <textarea
-                            value={newComment}
-                            onChange={(event) =>
-                                setNewComment(event.target.value)
-                            }
-                            maxLength={1000}
-                            required
-                        />
-                    </label>
-
-                    <button
-                        className="car-details-comment-submit"
-                        type="submit"
-                    >
-                        Добави коментар
-                    </button>
-                </form>
-
-                <div className="car-details-comment-list">
-                    {comments.map((comment) => (
-                        <Comment
-                            key={comment.id}
-                            author={comment.author}
-                            text={comment.text}
-                            onDelete={() =>
-                                setComments((current) =>
-                                    current.filter(
-                                        ({ id }) => id !== comment.id
-                                    )
-                                )
-                            }
-                        />
-                    ))}
-                </div>
+                <CarComments carId={car.id} />
             </section>
         </main>
     );

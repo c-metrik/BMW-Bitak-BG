@@ -143,6 +143,7 @@ export function createCollectionApi(endpoint) {
 
 // APIs for all collections
 export const api = {
+    
     cars: {
         ...createCollectionApi(ENDPOINTS.CARS),
 
@@ -152,5 +153,14 @@ export const api = {
             request(`${ENDPOINTS.CARS}?select=*&order=created_at.desc&limit=6`),
         getByOwner: (userId) =>
             request(`${ENDPOINTS.CARS}?owner_id=eq.${encodeURIComponent(userId)}&select=*&order=created_at.desc`),
+    },
+
+    comments: {
+    ...createCollectionApi(ENDPOINTS.COMMENTS),
+
+    getByCarId: (carId) =>
+        request(
+            `${ENDPOINTS.COMMENTS}?car_id=eq.${encodeURIComponent(carId)}&select=*&order=created_at.asc`
+        ),
     },
 };
