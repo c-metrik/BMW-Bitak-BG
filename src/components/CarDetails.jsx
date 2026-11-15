@@ -11,38 +11,31 @@ export function CarDetails() {
     const navigate = useNavigate();
     const [car, setCar] = useState(null);
     const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
 
 
     useEffect(() => {
+    async function loadCar() {
+        setIsLoading(true);
+        setError("");
+        setCar(null);
 
-        async function loadCar() {
-            try {
-                const result = await api.cars.getById(carId);
-                setCar(result[0] || null);
-            } catch (error) {
-                setError(error.message);
-            }
+        try {
+            const result = await api.cars.getById(carId);
+            setCar(result[0] || null);
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setIsLoading(false);
         }
+    }
 
-        loadCar();
-
+    loadCar();
     }, [carId]);
 
-    function addComment(event) {
-        event.preventDefault();
 
-        const author = newAuthor.trim();
-        const text = newComment.trim();
-
-        if (!author || !text) return;
-
-        setComments((current) => [
-            ...current,
-            { id: Date.now(), author, text },
-        ]);
-
-        setNewAuthor("");
-        setNewComment("");
+    if (isLoading) {
+    return <main><p>Зареждане на обявата...</p></main>;
     }
 
     if (error) {
@@ -50,7 +43,7 @@ export function CarDetails() {
     }
 
     if (!car) {
-        return <p>Зареждане на обявата...</p>;
+        return <main><p>Обявата не е намерена.</p></main>;
     }
 
     const isOwner = Boolean(user && car.owner_id === user.id);

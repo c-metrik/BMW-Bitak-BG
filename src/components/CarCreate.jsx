@@ -13,50 +13,63 @@ export function CarCreate({ initialData = null }) {
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-   async function handleSubmit(event) {
-    event.preventDefault();
+    async function handleSubmit(event) {
+        event.preventDefault();
 
-    if (isSubmitting) return;
+        if (isSubmitting) return;
 
-    setError("");
-    setIsSubmitting(true);
+        setError("");
+        setIsSubmitting(true);
 
-    try {
-        const formData = new FormData(event.currentTarget);
+        try {
+            const formData = new FormData(event.currentTarget);
 
-        const carData = {
-            trim: formData.get("trim")?.trim() || null,
-            year: Number(formData.get("year")),
-            color: formData.get("color")?.trim() || null,
-            fuel_type: formData.get("fuelType"),
-            transmission: formData.get("transmission"),
-            power: formData.get("power")? Number(formData.get("power")): null,
-            price: Number(formData.get("price")),
-            phone: formData.get("phone")?.trim(),
-            location: formData.get("location")?.trim(),
-            description: formData.get("description")?.trim(),
-        };
+            const carData = {
+                trim: formData.get("trim")?.trim() || null,
+                year: Number(formData.get("year")),
+                color: formData.get("color")?.trim() || null,
+                fuel_type: formData.get("fuelType"),
+                transmission: formData.get("transmission"),
+                power: formData.get("power")? Number(formData.get("power")): null,
+                price: Number(formData.get("price")),
+                phone: formData.get("phone")?.trim(),
+                location: formData.get("location")?.trim(),
+                description: formData.get("description")?.trim(),
+            };
 
-        if (isEditing) {
-            await api.cars.update(initialData.id, carData);
-            navigate(`/cars/${initialData.id}`);
-        } else {
-            const createdCars = await api.cars.create({
-            ...carData,
-            owner_id: user.id,
-            photos: [],
-        });
+            const currentYear = new Date().getFullYear();
 
-    const newCar = createdCars[0];
+            if (
+                !Number.isInteger(carData.year) ||
+                carData.year < 1950 ||
+                carData.year > currentYear
+            ) {
+                setError("Моля, въведете валидна година на производство.");
+                return;
+            }
 
-    navigate(`/cars/${newCar.id}`);
-    }
 
-    } catch (error) {
-        setError(error.message);
-    } finally {
-        setIsSubmitting(false);
-    }
+
+            if (isEditing) {
+                await api.cars.update(initialData.id, carData);
+                navigate(`/cars/${initialData.id}`);
+            } else {
+                const createdCars = await api.cars.create({
+                ...carData,
+                owner_id: user.id,
+                photos: [],
+            });
+
+        const newCar = createdCars[0];
+
+        navigate(`/cars/${newCar.id}`);
+        }
+
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setIsSubmitting(false);
+        }
 }
 
     return (
@@ -113,7 +126,16 @@ export function CarCreate({ initialData = null }) {
                         </label>
                         <label className="car-form__field">
                             Телефон
-                            <input name="phone" type="tel" autoComplete="tel" placeholder="+359 ..." required defaultValue={initialData?.phone ?? ""}/>
+                            <input
+                                name="phone"
+                                type="tel"
+                                autoComplete="tel"
+                                placeholder="+359 ..."
+                                required
+                                defaultValue={initialData?.phone ?? ""}
+                                minLength={7}
+                                maxLength={20}
+                            />
                         </label>
                         <label className="car-form__field">
                             Местоположение

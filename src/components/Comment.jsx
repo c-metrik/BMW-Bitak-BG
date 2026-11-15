@@ -5,10 +5,12 @@ export function Comment({ author, text, onEdit, onDelete, canManage }) {
     const [commentText, setCommentText] = useState(text)
     const [draft, setDraft] = useState(text)
     const [isEditing, setIsEditing] = useState(false)
+    const [editError, setEditError] = useState("")
 
     function startEditing() {
-        setDraft(commentText)
-        setIsEditing(true)
+    setEditError("");
+    setDraft(commentText);
+    setIsEditing(true);
     }
 
     async function saveEdit() {
@@ -16,18 +18,21 @@ export function Comment({ author, text, onEdit, onDelete, canManage }) {
 
     if (!updatedText) return;
 
+    setEditError("");
+
     try {
         await onEdit(updatedText);
         setCommentText(updatedText);
         setIsEditing(false);
     } catch (err) {
-        console.error("Failed to update comment:", err);
+        setEditError("Неуспешно редактиране на коментара.");
     }
     }
 
     function cancelEdit() {
-        setDraft(commentText)
-        setIsEditing(false)
+    setEditError("");
+    setDraft(commentText);
+    setIsEditing(false);
     }
 
     return (
@@ -70,6 +75,8 @@ export function Comment({ author, text, onEdit, onDelete, canManage }) {
                     <p className="comment-text">{commentText}</p>
                 )
             }
+
+            {editError && <p role="alert">{editError}</p>}
         </article>
     )
 }

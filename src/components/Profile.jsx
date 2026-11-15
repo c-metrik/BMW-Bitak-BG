@@ -9,27 +9,38 @@ export function Profile() {
     const { user } = useAuth();
     const [cars, setCars] = useState([]);
     const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
+    
 
     useEffect(() => {
-        if (!user?.id) return;
+    if (!user?.id) {
+        setIsLoading(false);
+        return;
+    }
 
-        async function loadMyCars() {
-            try {
-                const result = await api.cars.getByOwner(user.id);
-                setCars(result);
-            } catch (err) {
-                setError("Неуспешно зареждане на вашите обяви.");
-            }
+    async function loadMyCars() {
+        setIsLoading(true);
+        setError("");
+
+        try {
+            const result = await api.cars.getByOwner(user.id);
+            setCars(result);
+        } catch (err) {
+            setError("Неуспешно зареждане на вашите обяви.");
+        } finally {
+            setIsLoading(false);
         }
+    }
 
-        loadMyCars();
+    loadMyCars();
     }, [user?.id]);
 
+        
     return (
         <main className="profile-page">
             <article className="profile-card">
                 <header className="profile-card__header">
-                    <div className="profile-card__avatar" aria-hidden="true">{user?.email[0].toUpperCase()}</div>
+                    <div className="profile-card__avatar" aria-hidden="true">{user?.email?.[0]?.toUpperCase() ?? "?"}</div>
                     <div className="profile-card__identity">
                         <p className="profile-card__eyebrow">BMW Битак</p>
                         <h1>{user?.email}</h1>
@@ -48,12 +59,12 @@ export function Profile() {
             <section className="profile-card__listings">
                     {cars.length > 0 && <h2>Вашите обяви</h2>}
 
-                    {error && <p role="alert">{error}</p>}
-
                     {!error && (
-                        cars.length > 0
-                            ? <CarCardGrid cars={cars} />
-                            : <p>Нямате публикувани обяви.</p>
+                                isLoading
+                                    ? <p>Зареждане на обявите...</p>
+                                    : cars.length > 0
+                                        ? <CarCardGrid cars={cars} />
+                                        : <p>Нямате публикувани обяви.</p>
                     )}
             </section>
         </main>

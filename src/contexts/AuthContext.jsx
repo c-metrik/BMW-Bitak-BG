@@ -28,6 +28,8 @@ export function AuthProvider({ children }) {
 
                 if (!session) {
                     sessionService.clearSession();
+                    setUser(null);
+                    setRole(null);
                     return;
                 }
 
@@ -75,18 +77,25 @@ export function AuthProvider({ children }) {
     async function register(email, password) {
     const session = await authService.register(email, password);
 
-    if (!session.access_token || !session.user) {
+    if (!session?.access_token || !session?.user) {
         throw new Error("Registration did not return a session.");
     }
 
     sessionService.saveSession(session);
 
-    const currentRole = await authService.getRole(session.user.id);
+    try {
+        const currentRole = await authService.getRole(session.user.id);
 
-    setUser(session.user);
-    setRole(currentRole);
+        setUser(session.user);
+        setRole(currentRole);
 
-    return session.user;
+        return session.user;
+    } catch (error) {
+        sessionService.clearSession();
+        setUser(null);
+        setRole(null);
+        throw error;
+    }
     }
 
     async function logout() {

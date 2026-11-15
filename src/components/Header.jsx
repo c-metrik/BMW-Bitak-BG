@@ -3,6 +3,8 @@ import { NavLink, Link, useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
 import "./Header.css";
 
+import bmwLogo from "../assets/images/bmw-logo.png";
+
 export function Header() {
     const { user, role, isAuthenticated, logout } = useAuth();
     const navigate = useNavigate();
@@ -22,7 +24,7 @@ export function Header() {
                 <Link className="header__brand" to="/">
                     <img
                         className="header__logo"
-                        src="/src/assets/images/bmw-logo.png"
+                        src={bmwLogo}
                         alt="BMW Logo"
                     />
                     BMW <span>Битак</span>

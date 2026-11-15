@@ -104,20 +104,19 @@ export function CarComments({ carId }) {
 
             {error && <p role="alert">{error}</p>}
 
-            {!error && (
-                comments.length > 0
-                    ? comments.map(comment => (
-                        <Comment
-                            key={comment.id}
-                            author={comment.author_name ?? "Потребител"}
-                            text={comment.content}
-                            onEdit={(updatedText) => handleEditComment(comment.id, updatedText)}
-                            onDelete={() => handleDeleteComment(comment.id)}
-                            canManage={user?.id === comment.author_id}
-                        />
-                    ))
-                    : <p>Все още няма коментари.</p>
-            )}
+            {comments.length > 0
+                ? comments.map(comment => (
+                    <Comment
+                        key={comment.id}
+                        author={comment.author_name ?? "Потребител"}
+                        text={comment.content}
+                        onEdit={(updatedText) => handleEditComment(comment.id, updatedText)}
+                        onDelete={() => handleDeleteComment(comment.id)}
+                        canManage={user?.id === comment.author_id}
+                    />
+                ))
+                : !error && <p>Все още няма коментари.</p>
+            }
         </section>
     );
 }
