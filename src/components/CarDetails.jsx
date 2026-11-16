@@ -2,7 +2,7 @@ import "./CarDetails.css";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { CarComments } from "./CarComments";
-import { api } from "../API/Requester";
+import {api, getCarPhotoPath, deleteCarPhoto} from "../API/Requester";
 import { useAuth } from "../contexts/AuthContext";
 
 export function CarDetails() {
@@ -58,15 +58,27 @@ export function CarDetails() {
 
     if (!confirmed) return;
 
+    const photoUrl = car.photos?.[0];
+    const photoPath = getCarPhotoPath(photoUrl);
+
     try {
         await api.cars.remove(car.id);
-
-        alert("Обявата беше изтрита успешно!");
-
-        navigate("/catalog");
     } catch (err) {
         alert(`Грешка при изтриване: ${err.message}`);
+        return;
     }
+
+    if (photoPath) {
+        try {
+            await deleteCarPhoto(photoPath);
+        } catch (err) {
+            console.error("Failed to delete car photo:", err);
+            alert("Обявата е изтрита, но снимката не можа да бъде премахната.");
+        }
+    }
+
+    alert("Обявата беше изтрита успешно!");
+    navigate("/catalog");
     }
 
     return (

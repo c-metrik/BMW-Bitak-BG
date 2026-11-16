@@ -3,7 +3,7 @@ import "./Forms.css"
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
-import { api, storageRequest, getCarPhotoUrl } from "../API/Requester";
+import {api, storageRequest, getCarPhotoUrl, getCarPhotoPath, deleteCarPhoto} from "../API/Requester";
 
 export function CarCreate({ initialData = null }) {
     const isEditing = Boolean(initialData?.id);
@@ -53,7 +53,33 @@ export function CarCreate({ initialData = null }) {
 
 
             if (isEditing) {
+                const oldPhotoUrl = initialData.photos?.[0];
+                let newPhotoUrl = null;
+
+                if (photo instanceof File && photo.size > 0) {
+                    const extension = photo.name.split(".").pop().toLowerCase();
+                    const filePath = `${user.id}/${crypto.randomUUID()}.${extension}`;
+
+                    await storageRequest(filePath, photo);
+                    newPhotoUrl = getCarPhotoUrl(filePath);
+
+                    carData.photos = [newPhotoUrl];
+                }
+
                 await api.cars.update(initialData.id, carData);
+
+                if (newPhotoUrl && oldPhotoUrl) {
+                    const oldPath = getCarPhotoPath(oldPhotoUrl);
+
+                    if (oldPath) {
+                        try {
+                            await deleteCarPhoto(oldPath);
+                        } catch (err) {
+                            console.error("Failed to delete old photo:", err);
+                        }
+                    }
+                }
+
                 navigate(`/cars/${initialData.id}`);
             } else {
                 let photoUrl = null;

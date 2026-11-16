@@ -6,10 +6,6 @@ const restUrl = `${baseUrl}/rest/v1`;
 const authUrl = `${baseUrl}/auth/v1`;
 const storageUrl = `${baseUrl}/storage/v1/object/car-photos`;
 
-export function getCarPhotoUrl(filePath) {
-    return `${baseUrl}/storage/v1/object/public/car-photos/${filePath}`;
-}
-
 
 // Get authentication headers
 function getAccessToken() {
@@ -32,7 +28,19 @@ async function baseRequest(
     data = null,
     opts = {}
 ) {
-    const accessToken = getAccessToken();
+    let accessToken = getAccessToken();
+
+    if (url !== authUrl) {
+        const { sessionService } = await import("./SessionService");
+
+        let session = sessionService.getSession();
+
+        if (session && sessionService.isExpired(session)) {
+            session = await sessionService.refreshSession();
+        }
+
+        accessToken = session?.access_token || null;
+    }
 
     const options = {
         ...opts,
@@ -87,15 +95,33 @@ async function baseRequest(
     return responseText ? JSON.parse(responseText) : null;
 };
 
+
 // Generic REST request
 export default function request(path = "/", method = "GET", data = null, opts = {}) {
     return baseRequest(restUrl, path, method, data, opts);
 }
 
+
 // Authentication request
 export const authRequest = (path = "/", method = "GET", data = null, opts = {}) => {
     return baseRequest(authUrl, path, method, data, opts);
 };
+
+
+export function getCarPhotoUrl(filePath) {
+    return `${baseUrl}/storage/v1/object/public/car-photos/${filePath}`;
+}
+
+export function getCarPhotoPath(photoUrl) {
+    const prefix = `${baseUrl}/storage/v1/object/public/car-photos/`;
+
+    if (!photoUrl?.startsWith(prefix)) {
+        return null;
+    }
+
+    return photoUrl.slice(prefix.length);
+}
+
 
 // Storage request
 export const storageRequest = (fileName, file) => {
@@ -105,6 +131,13 @@ export const storageRequest = (fileName, file) => {
         }
     });
 };
+
+// Storage request
+export const deleteCarPhoto = (filePath) => {
+    return baseRequest(storageUrl, `/${filePath}`, "DELETE");
+};
+
+
 
 // CRUD OPERATIONS
 export const crud = {
