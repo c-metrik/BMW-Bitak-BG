@@ -1,6 +1,7 @@
 import { authRequest } from "./Requester";
 
 const STORAGE_KEY = "auth";
+let refreshPromise = null;
 
 export const sessionService = {
     isExpired(session) {
@@ -38,12 +39,17 @@ export const sessionService = {
     },
 
     async refreshSession() {
-        const session = this.getSession();
+    if (refreshPromise) {
+        return refreshPromise;
+    }
 
-        if (!session?.refresh_token) {
-            return null;
-        }
+    const session = this.getSession();
 
+    if (!session?.refresh_token) {
+        return null;
+    }
+
+    refreshPromise = (async () => {
         const newSession = await authRequest(
             "/token?grant_type=refresh_token",
             "POST",
@@ -55,5 +61,12 @@ export const sessionService = {
         this.saveSession(newSession);
 
         return newSession;
+    })();
+
+    try {
+        return await refreshPromise;
+    } finally {
+        refreshPromise = null;
+    }
     },
 };

@@ -2,11 +2,11 @@
 
 **BMW-Битак** is a Bulgarian-language single-page marketplace for BMW vehicles. Visitors can browse advertisements and view vehicle details; registered users can publish and manage their own listings and participate in discussions through comments.
 
-This project was developed for the **React Exam Retake Project (November 2026)**. It uses a React frontend and a hosted Supabase backend; listing data is retrieved through HTTP requests and persists in the database.
+This project was developed for the **SoftUni React Exam Project (November 2026)**. It uses a React frontend and a hosted Supabase backend; listing data is retrieved through HTTP requests and persists in the database.
 
 ## Project links
 
-- **Live application: **
+- **Live application: https://bmw-bitak-bg.netlify.app/**
 - **Public GitHub repository:** https://github.com/c-metrik/BMW-Bitak-BG
 - **Backend:** Supabase (hosted PostgreSQL database, authentication, REST API, and Storage; no separate custom backend deployment)
 

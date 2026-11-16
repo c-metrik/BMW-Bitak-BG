@@ -24,7 +24,7 @@ export function Comment({ author, text, onEdit, onDelete, canManage }) {
         await onEdit(updatedText);
         setCommentText(updatedText);
         setIsEditing(false);
-    } catch (err) {
+    } catch {
         setEditError("Неуспешно редактиране на коментара.");
     }
     }

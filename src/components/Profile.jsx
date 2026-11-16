@@ -13,19 +13,14 @@ export function Profile() {
     
 
     useEffect(() => {
-    if (!user?.id) {
-        setIsLoading(false);
-        return;
-    }
+    if (!user?.id) return;
 
     async function loadMyCars() {
-        setIsLoading(true);
-        setError("");
 
         try {
             const result = await api.cars.getByOwner(user.id);
             setCars(result);
-        } catch (err) {
+        } catch {
             setError("Неуспешно зареждане на вашите обяви.");
         } finally {
             setIsLoading(false);

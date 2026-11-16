@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+
 import { createContext, useContext, useEffect, useState, } from "react";
 
 import { authService } from "../API/AuthService";
@@ -42,7 +44,7 @@ export function AuthProvider({ children }) {
                 setUser(currentUser);
                 setRole(currentRole);
 
-            } catch (error) {
+            } catch {
                 sessionService.clearSession();
                 setUser(null);
                 setRole(null);

@@ -6,7 +6,7 @@ import "./Header.css";
 import bmwLogo from "../assets/images/bmw-logo.png";
 
 export function Header() {
-    const { user, role, isAuthenticated, logout } = useAuth();
+    const { user, isAuthenticated, logout } = useAuth();
     const navigate = useNavigate();
 
     async function handleLogout() {

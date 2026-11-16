@@ -1,4 +1,3 @@
-import { Link } from "react-router"
 import "./Home.css"
 import { CarCardGrid } from "./CarCardGrid"
 import { api } from "../API/Requester";
@@ -11,13 +10,12 @@ export function Home() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        setIsLoading(true);
 
         async function loadCars() {
             try {
                 const result = await api.cars.getLatestSix();
                 setCars(result);
-            } catch (error) {
+            } catch {
                 setError("Неуспешно зареждане на обявите.");
             } finally{
                 setIsLoading(false);
