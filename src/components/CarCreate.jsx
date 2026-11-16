@@ -118,7 +118,7 @@ export function CarCreate({ initialData = null }) {
                     <div className="car-form__grid">
                         <label className="car-form__field">
                             Версия
-                            <input name="trim" type="text" placeholder="Напр. 320d xDrive" defaultValue={initialData?.trim ?? ""}/>
+                            <input name="trim" type="text"  maxLength={40} placeholder="Напр. 320d xDrive" defaultValue={initialData?.trim ?? ""}/>
                         </label>
                         <label className="car-form__field">
                             Година
@@ -129,7 +129,7 @@ export function CarCreate({ initialData = null }) {
                         </label>
                         <label className="car-form__field">
                             Цвят
-                            <input name="color" type="text" placeholder="Напр. Черен металик" defaultValue={initialData?.color ?? ""}/>
+                            <input name="color" type="text" maxLength={30} placeholder="Напр. Черен металик" defaultValue={initialData?.color ?? ""}/>
                         </label>
                     </div>
                     <div className="car-form__grid">
@@ -155,13 +155,13 @@ export function CarCreate({ initialData = null }) {
                         </label>
                         <label className="car-form__field">
                             Мощност (к.с.)
-                            <input name="power" type="number" min="1" step="1" placeholder="190" defaultValue={initialData?.power ?? ""}/>
+                            <input name="power" type="number" min="1" max={5000} step="1" placeholder="190" defaultValue={initialData?.power ?? ""}/>
                         </label>
                     </div>
                     <div className="car-form__grid">
                         <label className="car-form__field">
                             Цена (€)
-                            <input name="price" type="number" min="1" step="1" placeholder="25000" required defaultValue={initialData?.price ?? ""}/>
+                            <input name="price" type="number" min="1" max={1000000} step="1" placeholder="25000" required defaultValue={initialData?.price ?? ""}/>
                         </label>
                         <label className="car-form__field">
                             Телефон
@@ -178,7 +178,7 @@ export function CarCreate({ initialData = null }) {
                         </label>
                         <label className="car-form__field">
                             Местоположение
-                            <input name="location" type="text" placeholder="Град" required defaultValue={initialData?.location ?? ""}/>
+                            <input name="location" type="text" maxLength={20} placeholder="Град" required defaultValue={initialData?.location ?? ""}/>
                         </label>
                     </div>
                     <div className="car-form__grid car-form__grid--single">
@@ -186,7 +186,10 @@ export function CarCreate({ initialData = null }) {
                             Описание
                             <textarea name="description" rows="3" 
                                 placeholder="Опишете състоянието, оборудването и историята на автомобила." required 
-                            	defaultValue={initialData?.description ?? ""}/>
+                            	defaultValue={initialData?.description ?? ""}
+                                maxLength={100}
+                            />
+                            <span className="car-form__hint">Максимум 100 символа</span>
                         </label>
                         <label className="car-form__field">
                             Снимка на автомобила

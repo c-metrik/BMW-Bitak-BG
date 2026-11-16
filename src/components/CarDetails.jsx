@@ -97,7 +97,7 @@ export function CarDetails() {
                         <p>Цена: {Number(car.price).toLocaleString("bg-BG")} EUR</p>
                         <p>Телефон: {car.phone}</p>
                         <p>Местоположение: {car.location}</p>
-                        <p>Описание: {car.description}</p>
+                        <p className="car-description">Описание: {car.description}</p>
                     </div>
 
                     {isOwner && (
